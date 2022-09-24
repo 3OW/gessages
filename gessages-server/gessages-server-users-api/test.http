@@ -1,0 +1,43 @@
+### GET root
+GET http://localhost:3001 HTTP/1.1
+
+### POST User
+POST http://localhost:3001/signup/ HTTP/1.1
+content-type: application/json
+
+{
+  "id": "peter05",
+  "userName": "Peter",
+  "password": "abcdefghi",
+  "zoneId": null,
+  "location": {
+    "lon": 0.23,
+    "lat": 0.231,
+    "timestamp": 1632785619827
+  }
+}
+
+### POST to SignIn
+POST http://localhost:3001/signin/ HTTP/1.1
+content-type: application/json
+
+{
+  "id": "peter05",
+  "password": "abcdefghi"
+}
+
+### Update User
+PUT http://localhost:3001/user/peter05 HTTP/1.1
+content-type: application/json
+
+{
+  "id": "peter05",
+  "userName": "Hans"
+}
+
+### GET UserByID
+GET http://localhost:3001/user/peter05 HTTP/1.1
+
+### DELETE User
+DELETE http://localhost:3001/user/peter01 HTTP/1.1
+content-type: application/json

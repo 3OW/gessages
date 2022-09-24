@@ -1,0 +1,133 @@
+@hostname = localhost
+@port = 3002
+@host = {{hostname}}:{{port}}
+
+### GET root
+GET http://{{hostname}}:{{port}} HTTP/1.1
+
+### GET ThreadByID
+GET http://{{hostname}}:3000/thread/thd-eXYodPdYn0zJek5xiFi_b HTTP/1.1
+
+### GET ThreadByID
+GET http://{{hostname}}:{{port}}/thread/thd-eXYodPdYn0zJek5xiFi_b HTTP/1.1
+
+
+
+### POST Thread
+POST http://{{hostname}}:{{port}}/thread/ HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "usr-111111111111111111111",
+  "userName": "Pete",
+  "userLogo": "/path/to/logo.png",
+  "zoneId": null,
+  "location": {
+    "lon": 0.23,
+    "lat": 0.231,
+    "timestamp": 1632785619827
+  },
+  "message": "Hello World",
+    "images": null
+}
+
+### POST Thread
+POST http://{{hostname}}:{{port}}/thread/ HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "usr-111111111111111111111",
+  "userName": "Pete",
+  "userLogo": "/path/to/logo.png",
+  "zoneId": null,
+  "location": {
+    "lon": 13.4554471,
+    "lat": 52.5019332,
+    "timestamp": 1632785619827
+  },
+  "message": "Hello World",
+    "images": null
+}
+
+### POST Thread
+POST http://{{hostname}}:{{port}}/thread/ HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "usr-111111111111111111111",
+  "userName": "Pete",
+  "userLogo": "/path/to/logo.png",
+  "zoneId": null,
+  "location": {
+    "lon": 13.41053,
+    "lat": 52.52437,
+    "timestamp": 1632785619827
+  },
+  "message": "Hello Here",
+    "images": null
+}
+
+
+### Update Thread
+PUT http://{{hostname}}:{{port}}/thread/thd-XnBcdEmqALR4QfTEt-Kbw HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJ0ZXN0VXNlciIsImF1ZCI6InVzZXIiLCJpc3MiOiJnZXNzYWdlcy50bGQiLCJpYXQiOjE2NjM1ODU4NzMsImV4cCI6MTk5OTk5OTk5OX0.43Bakxo2LJFcp73Vv55hJQkJUDKS3OpKC0Z465FP4uTGbTwTtLlO0DWJSvBfRa-d2UsppuN3zCeeDbVgeNuEpQ
+
+{
+  "message": "Hello There"
+}
+
+### GET ThreadByID
+GET http://{{hostname}}:{{port}}/thread/thd-aubW2-yuit0sLiWEZnf7C HTTP/1.1
+
+
+### GET getNearThreads
+GET http://{{hostname}}:{{port}}/thread/near/13.41053/52.52437/50/false HTTP/1.1
+
+### GET getNearThreads with all
+GET http://{{hostname}}:{{port}}/thread/near/13.41053/52.52437/0.01/true HTTP/1.1
+
+
+### DELETE Thread
+DELETE http://{{hostname}}:{{port}}/thread/thd-ZTIR0XdBpFAF8eAcYrGSL HTTP/1.1
+content-type: application/json
+
+### POST Message
+POST http://{{hostname}}:{{port}}/message/thd-2iuY1bATMFUYEWdMGtJCx HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "usr-111111111111111111111",
+  "parentId": null,
+  "threadId": "thd-2iuY1bATMFUYEWdMGtJCx",
+  "location": {
+    "lon": 0.47,
+    "lat": 0.11,
+    "timestamp": 163190756336
+  },
+  "message": "Bye",
+  "images": null
+}
+
+
+### GET Message
+GET http://{{hostname}}:{{port}}/message/thd-npJixonRmUVfu5slkmBA9/msg-KB6UwEX8yns5XaF6RGXZ4 HTTP/1.1
+content-type: application/json
+
+### DELETE Message
+DELETE http://{{hostname}}:{{port}}/message/thd-npJixonRmUVfu5slkmBA9/msg-KB6UwEX8yns5XaF6RGXZ7 HTTP/1.1
+content-type: application/json
+
+### Update Message
+PUT http://{{hostname}}:{{port}}/message/thd-npJixonRmUVfu5slkmBA9/msg-KB6UwEX8yns5XaF6RGXZ7 HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "1",
+  "message": "Hello Again!?!",
+  "location": {
+    "lon": 0.23,
+    "lat": 0.231,
+    "timestamp": 1631907564545
+  } 
+}

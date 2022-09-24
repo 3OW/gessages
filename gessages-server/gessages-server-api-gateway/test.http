@@ -1,0 +1,184 @@
+@hostname = localhost
+@port = 3000
+@host = {{hostname}}:{{port}}
+
+### GET root
+GET http://{{hostname}}:{{port}} HTTP/1.1
+
+### POST Thread
+POST http://{{hostname}}:{{port}}/thread/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+{
+  "userId": "peter05",
+  "userName": "Pete",
+  "userLogo": "/path/to/logo.png",
+    "location": {
+    "lon": 0.23,
+    "lat": 0.231,
+    "timestamp": 1632785619827
+  },
+  "message": "Hello World",
+    "images": null
+}
+
+### POST Thread
+POST http://{{hostname}}:{{port}}/thread/ HTTP/1.1
+content-type: application/json
+
+{
+  "userId": "usr-111111111111111111111",
+  "userName": "Pete",
+  "userLogo": "/path/to/logo.png",
+  "zoneId": null,
+  "location": {
+    "lon": 13.4554471,
+    "lat": 52.5019332,
+    "timestamp": 1632785619827
+  },
+  "message": "Hello World",
+    "images": null
+}
+
+### POST Thread
+POST http://{{hostname}}:{{port}}/thread/ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+{
+  "userId": "peter05",
+  "userName": "Pete",
+  "userLogo": "/path/to/logo.png",
+  "zoneId": null,
+  "location": {
+    "lon": 13.41053,
+    "lat": 52.52437,
+    "timestamp": 1632785619827
+  },
+  "message": "Hello Here",
+    "images": null
+}
+
+
+### Update Thread
+PUT http://{{hostname}}:{{port}}/thread/thd-UpSyVI8BjaXKVPXLfcX8K HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+{
+  "userId": "peter05",
+  "message": "Hello There",
+  "location": {
+    "lon": 0.24,
+    "lat": 0.244,
+    "timestamp": 1633345319
+  } 
+}
+
+### GET ThreadByID
+GET http://{{hostname}}:{{port}}/thread/thd-aubW2-yuit0sLiWEZnf7C HTTP/1.1
+
+
+### GET getNearThreads
+GET http://{{hostname}}:{{port}}/thread/near/13.41053/52.52437/50/false HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+### GET getNearThreads with all
+GET http://{{hostname}}:{{port}}/thread/near/13.41053/52.52437/0.01/true HTTP/1.1
+
+
+### DELETE Thread
+DELETE http://{{hostname}}:{{port}}/thread/thd-7WCL52d9SSoE4Mn_yCzjW HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+### POST Message
+POST http://{{hostname}}:{{port}}/message/thd-UpSyVI8BjaXKVPXLfcX8K HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+{
+  "userId": "peter05",
+  "parentId": null,
+  "threadId": "thd-UpSyVI8BjaXKVPXLfcX8K",
+  "location": {
+    "lon": 0.47,
+    "lat": 0.11,
+    "timestamp": 163190756336
+  },
+  "message": "Bye",
+  "images": null
+}
+
+
+### GET Message
+GET http://{{hostname}}:{{port}}/message/thd-UpSyVI8BjaXKVPXLfcX8K/msg--9IiUg5fskhjP3EJoI4Sf HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+### DELETE Message
+DELETE http://{{hostname}}:{{port}}/message/thd-UpSyVI8BjaXKVPXLfcX8K/msg--9IiUg5fskhjP3EJoI4SQ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+### Update Message
+PUT http://{{hostname}}:{{port}}/message/thd-UpSyVI8BjaXKVPXLfcX8K/msg--9IiUg5fskhjP3EJoI4SQ HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+{
+  "userId": "000000",
+  "message": "Hello Again!?!",
+  "location": {
+    "lon": 0.23,
+    "lat": 0.231,
+    "timestamp": 1631907564545
+  } 
+}
+
+
+### POST User
+POST http://{{hostname}}:{{port}}/signup/ HTTP/1.1
+content-type: application/json
+
+{
+  "id": "peter05",
+  "userName": "Peter",
+  "password": "abcdefghi",
+  "zoneId": null,
+  "location": {
+    "lon": 0.23,
+    "lat": 0.231,
+    "timestamp": 1632785619827
+  }
+}
+
+### POST to SignIn
+POST http://{{hostname}}:{{port}}/signin/ HTTP/1.1
+content-type: application/json
+
+{
+  "id": "peter05",
+  "password": "abcdefghi"
+}
+
+
+### Update User
+PUT http://{{hostname}}:{{port}}/user/peter05 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+{
+  "userName": "Hans3",
+  "password": "abcdefghi"
+}
+
+### GET UserByID
+GET http://{{hostname}}:{{port}}/user/peter05 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
+
+### DELETE User
+DELETE http://{{hostname}}:{{port}}/user/peter05 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJwZXRlcjA1IiwiYXVkIjoidXNlciIsImlzcyI6Imdlc3NhZ2VzLnRsZCIsImlhdCI6MTY2MzU4NTg3MywiZXhwIjoxNjY2MTc3ODczfQ.6IKeQRq7dViZ7Vob6jNZhauvGf7Ns6xHf6p2kRyaYNz63K3j1UvHD3SL98P4fz63YwAY2dHJZNrJ_SdU8eCoWw
