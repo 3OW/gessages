@@ -29,13 +29,13 @@ export const getUserById = {
     404: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
     405: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
   },
@@ -50,16 +50,22 @@ export const createUser = {
       },
       additionalProperties: true,
     },
+    404: {
+      type: "object",
+      properties: {
+        error: { type: "string" },
+      },
+    },
     405: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
     409: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
   },
@@ -90,7 +96,7 @@ export const deleteUser = {
     404: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
   },
@@ -123,7 +129,7 @@ export const updateUser = {
     404: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
   },
@@ -156,13 +162,13 @@ export const getUserProperties = {
     404: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
     405: {
       type: "object",
       properties: {
-        status: { type: "string" },
+        error: { type: "string" },
       },
     },
   },

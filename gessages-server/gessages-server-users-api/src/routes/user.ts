@@ -38,7 +38,7 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
             await request.jwtVerify();
           } catch (err) {
             fastify.log.error(err);
-            return reply.status(500).send({ status: "jwt verify error" });
+            return reply.status(500).send({ error: "jwt verify error" });
           }
           if (
             typeof request.user == "object" &&
@@ -63,14 +63,14 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
               .header("Content-Type", "application/json")
               .send(JSON.parse(result));
           } else {
-            return reply.status(404).send({ status: "user not found" });
+            return reply.status(404).send({ error: "user not found" });
           }
         } else {
-          return reply.status(500).send({ status: "something went wrong" });
+          return reply.status(500).send({ error: "something went wrong" });
         }
       } catch (err) {
         fastify.log.error(err);
-        return reply.status(500).send({ status: "internal error" });
+        return reply.status(500).send({ error: "internal error" });
       }
     }
   );
@@ -91,7 +91,7 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
             return reply.code(404).send(err.message);
           }
           if (result != null) {
-            return reply.status(409).send({ status: "user already exists" });
+            return reply.status(409).send({ error: "user already exists" });
           }
 
           // Hash password
@@ -99,7 +99,7 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
           if (hashedPW === null) {
             reply
               .status(404)
-              .send({ status: "Create User failed: Password problem" });
+              .send({ error: "Create User failed: Password problem" });
           } else body.password = hashedPW;
 
           Object.assign(body, { createdAt: Date.now() });
@@ -110,20 +110,20 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
           await multi.exec((err: any, results: any) => {
             for (let i = 0; i < results.length; i += 1) {
               if (results[i][1] != "OK" && results[i][1] != 1) {
-                return reply.status(404).send({ status: "Create User failed" });
+                return reply.status(404).send({ error: "Create User failed" });
               }
             }
             return reply
               .header("Content-Type", "application/json")
               .status(201)
-              .send(err || { id: body.id });
+              .send({ id: body.id });
           });
         } else {
-          return reply.status(500).send({ status: "something went wrong" });
+          return reply.status(500).send({ error: "something went wrong" });
         }
       } catch (err) {
         fastify.log.error(err);
-        return reply.status(500).send({ status: "internal error" });
+        return reply.status(500).send({ error: "internal error" });
       }
     }
   );
@@ -144,7 +144,7 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
             await request.jwtVerify();
           } catch (err) {
             fastify.log.error(err);
-            return reply.status(500).send({ status: "jwt verify error" });
+            return reply.status(500).send({ error: "jwt verify error" });
           }
           if (
             typeof request.user == "object" &&
@@ -162,16 +162,16 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
           if (result == 1) {
             return reply.status(200).send({ status: "success" });
           } else if (result == 0) {
-            return reply.status(404).send({ status: "user not found" });
+            return reply.status(404).send({ error: "user not found" });
           } else {
-            return reply.status(500).send({ status: "something went wrong" });
+            return reply.status(500).send({ error: "something went wrong" });
           }
         } else {
-          return reply.status(500).send({ status: "something went wrong" });
+          return reply.status(500).send({ error: "something went wrong" });
         }
       } catch (err) {
         fastify.log.error(err);
-        return reply.status(500).send({ status: "internal error" });
+        return reply.status(500).send({ error: "internal error" });
       }
     }
   );
@@ -194,7 +194,7 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
             await request.jwtVerify();
           } catch (err) {
             fastify.log.error(err);
-            return reply.status(500).send({ status: "jwt verify error" });
+            return reply.status(500).send({ error: "jwt verify error" });
           }
           if (
             typeof request.user == "object" &&
@@ -215,7 +215,7 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
           }
           if (test == null) {
             return reply.status(403).send({
-              status: "user doesn't exists",
+              error: "user doesn't exists",
             });
           }
           Object.assign(body, { updatedAt: Date.now() });
@@ -237,19 +237,17 @@ const user: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
             // check if Redis Multi returns errors
             for (let i = 0; i < results.length; i += 1) {
               if (results[i][1] == null) {
-                return reply.status(404).send({ status: "user update failed" });
+                return reply.status(404).send({ error: "user update failed" });
               }
             }
-            return reply.send(
-              err || { status: results, id: request.params.userId }
-            );
+            return reply.send({ status: results, id: request.params.userId });
           });
         } else {
-          return reply.status(500).send({ status: "something went wrong" });
+          return reply.status(500).send({ error: "something went wrong" });
         }
       } catch (err) {
         fastify.log.error(err);
-        return reply.status(500).send({ status: "internal error" });
+        return reply.status(500).send({ error: "internal error" });
       }
     }
   );

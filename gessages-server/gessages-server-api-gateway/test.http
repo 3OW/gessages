@@ -159,10 +159,18 @@ POST http://{{hostname}}:{{port}}/signin/ HTTP/1.1
 content-type: application/json
 
 {
+  "id": "testUser1",
+  "password": "foo1234bar"
+}
+
+### POST to SignIn
+POST http://{{hostname}}:{{port}}/signin/ HTTP/1.1
+content-type: application/json
+
+{
   "id": "peter05",
   "password": "abcdefghi"
 }
-
 
 ### Update User
 PUT http://{{hostname}}:{{port}}/user/peter05 HTTP/1.1

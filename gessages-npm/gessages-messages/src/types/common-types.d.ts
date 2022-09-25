@@ -5,7 +5,6 @@ export type TimestampType = number;
 export type ImagesType = Array<ImageUrlType> | null;
 export type MessageIdType = `msg-${string}`;
 export type ThreadIdType = `thd-${string}`;
-export type UserIdType = `usr-${string}`;
 
 export type Location = {
   lon: number;
@@ -58,8 +57,12 @@ export type StatusMessage = {
   status: string;
 };
 
+export type ErrorMessage = {
+  error: string;
+};
+
 export type ApiError = {
-  statusCode: number;
-  errortype: string;
-  message: string;
+  statusCode?: number;
+  errortype?: string;
+  message?: string;
 };

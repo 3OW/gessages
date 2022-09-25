@@ -1,0 +1,8 @@
+node_modules/
+temporary-files/*
+coverage/
+dist/
+.vscode
+!.vscode/launch.json
+*.key
+*.crt

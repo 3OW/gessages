@@ -11,6 +11,10 @@ import {
   Location,
 } from "./types/common-types";
 
+type ErrorType = {
+  error?: string;
+};
+
 const handleError = (error: unknown) => {
   if (axios.isAxiosError(error) && error.code == "ECONNREFUSED") {
     const res = {
@@ -22,16 +26,20 @@ const handleError = (error: unknown) => {
 
   if (axios.isAxiosError(error) && error.response) {
     const res: Partial<ApiError> = {};
-    res["statusCode"] = error.response?.status;
-    res["errortype"] = error.response?.statusText;
+    res.statusCode = error.response.status;
+    res.errortype = error.response.statusText;
+    const data = <ErrorType>error.response.data;
     if (
-      Object.prototype.hasOwnProperty.call(error.response?.data, "message") &&
-      typeof (error.response?.data["message"] == String)
+      typeof data == "object" &&
+      data != null &&
+      "error" in data &&
+      typeof data["error"] === "string"
     ) {
-      res["message"] = error.response?.data["message"];
+      res.message = data["error"];
     }
     return res;
   } else {
+    //TODO handle non Axios errors
     console.log(error);
   }
 };

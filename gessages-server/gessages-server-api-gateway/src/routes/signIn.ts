@@ -48,14 +48,14 @@ const signin: FastifyPluginAsync = async (fastify, opts): Promise<void> => {
                 .status(403)
                 .send({ auth: false });
           } else {
-            return reply.status(500).send({ status: "something went wrong" });
+            return reply.status(500).send({ error: "something went wrong" });
           }
         } else {
-          return reply.status(500).send({ status: "something went wrong" });
+          return reply.status(500).send({ error: "something went wrong" });
         }
       } catch (err) {
         fastify.log.error(err);
-        return reply.status(500).send({ status: "internal error" });
+        return reply.status(500).send({ error: "internal error" });
       }
     }
   );

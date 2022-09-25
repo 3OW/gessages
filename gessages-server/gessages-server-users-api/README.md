@@ -17,7 +17,6 @@ see config.ts for explanations
 - SECRET
 ```
 
-
 ## Create GeoIndex in Redis
 
 ```
@@ -42,7 +41,5 @@ npm run test
 - [x] Proper Reconnection to Redis
 - [x] Check for proper authorization for /user/ GET requests
 - [ ] Proper types everywhere
-- [ ] complete Tests
+- [ ] Tests
 - [ ] clear TODOS from source
-
-
