@@ -18,7 +18,7 @@ the Gessages API server
 
 ## TODO:
 
-- [ ] gessages-users NPM package
+- [x] gessages-users NPM package
 - [ ] React UI
 - [ ] profile images and photo uploads
 - [ ] React native app
