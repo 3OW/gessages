@@ -5,8 +5,6 @@ describe("Users", () => {
   const host = "http://localhost:3000";
   const badHost = "http://localhost:22";
 
-  const createdUser = <users.UserIdType>"Test1234";
-
   let jwt = "";
 
   const goodPayload = {
