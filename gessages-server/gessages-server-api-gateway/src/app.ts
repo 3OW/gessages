@@ -34,18 +34,12 @@ const DB = {
   },
 };
 
-const users =
-  "http://" +
-  (process.env.USERS_HOST || DEFAULT_USERS_HOST) +
-  ":" +
-  (process.env.USERS_PORT || DEFAULT_USERS_PORT);
-console.log(users);
-const messages =
-  "http://" +
-  (process.env.MESSAGES_HOST || DEFAULT_MESSAGES_HOST) +
-  ":" +
-  (process.env.MESSAGES_PORT || DEFAULT_MESSAGES_PORT);
-console.log(messages);
+const users = `http://${process.env.USERS_HOST || DEFAULT_USERS_HOST}:${
+  process.env.USERS_PORT || DEFAULT_USERS_PORT
+}`;
+const messages = `http://${
+  process.env.MESSAGES_HOST || DEFAULT_MESSAGES_HOST
+}:${process.env.MESSAGES_PORT || DEFAULT_MESSAGES_PORT}`;
 const secret = process.env.SECRET || SECRET;
 
 export type AppOptions = {
