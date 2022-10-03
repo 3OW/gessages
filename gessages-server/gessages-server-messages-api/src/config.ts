@@ -1,5 +1,6 @@
-// default port of the application
+// default port and host of the application
 export const DEFAULT_PORT = 3002;
+export const DEFAULT_HOST = "localhost";
 
 // default Redis settings
 
