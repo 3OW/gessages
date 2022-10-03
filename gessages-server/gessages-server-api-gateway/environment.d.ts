@@ -3,6 +3,7 @@ declare global {
   namespace NodeJS {
     interface ProcessEnv {
       PORT: string;
+      HOST: string;
       DEFAULT_LOG_LEVEL: string;
       //Microservice URLs, e.g. "http://localhost:3001"
       USERS: string;

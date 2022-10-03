@@ -1,0 +1,45 @@
+version: "3"
+services:
+  redis:
+    image: redis/redis-stack-server
+    networks:
+      - api-server
+    ports:
+      - "127.0.0.1:6379:6379/tcp"
+  users:
+    build: ./gessages-server-users-api
+    ports:
+      - "127.0.0.1:3001:3001"
+    networks:
+      - api-server
+    environment:
+      - DB_HOST=redis
+      - DB_PORT=6379
+    depends_on:
+      - redis
+  messages:
+    build: ./gessages-server-messages-api
+    ports:
+      - "127.0.0.1:3002:3002"
+    networks:
+      - api-server
+    environment:
+      - DB_HOST=redis
+      - DB_PORT=6379
+    depends_on:
+      - redis
+  gateway:
+    build: ./gessages-server-api-gateway
+    ports:
+      - "3000:3000"
+    networks:
+      - api-server
+    environment:
+      - DB_HOST=redis
+      - DB_PORT=6379
+      - HOST=0.0.0.0
+    depends_on:
+      - redis
+networks:
+  api-server:
+    driver: bridge

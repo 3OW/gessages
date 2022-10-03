@@ -14,6 +14,7 @@ see config.ts for explanations
 
 ```
 - PORT    (default: 3000)
+- HOST    (default: localhost)
 
 // Redis
 - DB_HOST

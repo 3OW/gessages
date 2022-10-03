@@ -4,8 +4,9 @@
  * environment variables if using docker.
  */
 
-// default port of the application
+// default port and host of the application
 export const DEFAULT_PORT = 3000;
+export const DEFAULT_HOST = "localhost";
 
 // default log level
 export const DEFAULT_LOG_LEVEL = "debug";
@@ -16,7 +17,6 @@ export const MESSAGES = "http://localhost:3002";
 
 // JWT HS512 Key
 export const SECRET = "YourSecretKey";
-
 
 // default Redis settings
 export const DEFAULT_DB_HOST = "192.168.5.204";
