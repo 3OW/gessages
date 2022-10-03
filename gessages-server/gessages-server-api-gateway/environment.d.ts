@@ -5,9 +5,11 @@ declare global {
       PORT: string;
       HOST: string;
       DEFAULT_LOG_LEVEL: string;
-      //Microservice URLs, e.g. "http://localhost:3001"
-      USERS: string;
-      MESSAGES: string;
+      //Microservices
+      USERS_HOST: string;
+      USERS_PORT: string;
+      MESSAGES_HOST: string;
+      MESSAGES_PORT: string;
       DB_HOST: string;
       DB_PORT: string;
       DB_USER: string;

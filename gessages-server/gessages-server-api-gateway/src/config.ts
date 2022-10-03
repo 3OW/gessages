@@ -12,8 +12,10 @@ export const DEFAULT_HOST = "localhost";
 export const DEFAULT_LOG_LEVEL = "debug";
 
 // Microservices
-export const USERS = "http://localhost:3001";
-export const MESSAGES = "http://localhost:3002";
+export const DEFAULT_USERS_HOST = "localhost";
+export const DEFAULT_USERS_PORT = "3001";
+export const DEFAULT_MESSAGES_HOST = "localhost";
+export const DEFAULT_MESSAGES_PORT = "3002";
 
 // JWT HS512 Key
 export const SECRET = "YourSecretKey";

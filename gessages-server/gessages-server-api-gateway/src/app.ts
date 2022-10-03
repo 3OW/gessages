@@ -4,7 +4,13 @@ import AutoLoad, { AutoloadPluginOptions } from "@fastify/autoload";
 import { FastifyPluginAsync } from "fastify";
 import cors from "@fastify/cors";
 import helmet from "@fastify/helmet";
-import { USERS, MESSAGES, SECRET } from "./config";
+import {
+  SECRET,
+  DEFAULT_USERS_HOST,
+  DEFAULT_USERS_PORT,
+  DEFAULT_MESSAGES_HOST,
+  DEFAULT_MESSAGES_PORT,
+} from "./config";
 import fastifyHttpProxy from "@fastify/http-proxy";
 import fastifyJwt from "@fastify/jwt";
 import { authPlainToken } from "./auth/authenticate";
@@ -28,8 +34,18 @@ const DB = {
   },
 };
 
-const users = process.env.USERS || USERS;
-const messages = process.env.MESSAGES || MESSAGES;
+const users =
+  "http://" +
+  (process.env.USERS_HOST || DEFAULT_USERS_HOST) +
+  ":" +
+  (process.env.USERS_PORT || DEFAULT_USERS_PORT);
+console.log(users);
+const messages =
+  "http://" +
+  (process.env.MESSAGES_HOST || DEFAULT_MESSAGES_HOST) +
+  ":" +
+  (process.env.MESSAGES_PORT || DEFAULT_MESSAGES_PORT);
+console.log(messages);
 const secret = process.env.SECRET || SECRET;
 
 export type AppOptions = {

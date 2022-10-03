@@ -15,6 +15,7 @@ services:
     environment:
       - DB_HOST=redis
       - DB_PORT=6379
+      - HOST=0.0.0.0
     depends_on:
       - redis
   messages:
@@ -26,6 +27,7 @@ services:
     environment:
       - DB_HOST=redis
       - DB_PORT=6379
+      - HOST=0.0.0.0
     depends_on:
       - redis
   gateway:
@@ -37,9 +39,15 @@ services:
     environment:
       - DB_HOST=redis
       - DB_PORT=6379
+      - USERS_HOST=users
+      - USERS_PORT=3001
+      - MESSAGES_HOST=messages
+      - MESSAGES_PORT=3002
       - HOST=0.0.0.0
     depends_on:
       - redis
+      - users
+      - messages
 networks:
   api-server:
     driver: bridge
