@@ -25,8 +25,10 @@ see config.ts for explanations
 - SECRET
 
 // Microservices
-USERS     (default: "http://localhost:3001")
-MESSAGES  (default: "http://localhost:3002")
+USERS_HOST      (default: localhost)
+USERS_PORT      (default: 3001)
+MESSAGES_HOST   (default: localhost)
+MESSAGES_PORT   (default: 3002)
 ```
 
 ## Run Test
@@ -40,5 +42,3 @@ npm run test
 - [ ] Implement JWT Refresh Token
 - [ ] Tests
 - [ ] Proper types everywhere
-
-
