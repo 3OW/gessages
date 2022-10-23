@@ -1,3 +1,6 @@
+![Server CI](https://github.com/3OW/gessages/actions/workflows/server-ci.yml/badge.svg)
+
+
 # Gessages Monorepo
 
 Gessages (short for GeoMessages) provides messaging dependent on the geographical position of the users.
