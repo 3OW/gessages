@@ -1,0 +1,64 @@
+name: ServerCI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+
+jobs:
+  # Label of the job
+  server-tests:
+    # Containers must run in Linux based operating systems
+    runs-on: ubuntu-latest
+    # Docker Hub image that `container-job` executes in
+    container: node:16-bullseye
+
+    # Service containers to run with `container-job`
+    services:
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis/redis-stack-server
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli FT.CREATE geoIdx ON JSON SCHEMA $.geoIndex AS geoIndex GEO"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      # Downloads a copy of the code in your repository before running CI tests
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      
+      # Test API  Server
+      - name: build and test server-messages-api
+        working-directory: ./gessages-server/gessages-server-messages-api
+        run: |
+          npm install
+          npm run build --if-present
+          npm run test
+        env:
+          DB_HOST: redis
+          DB_PORT: 6379
+   
+      - name: build and test server-users-api
+        working-directory: ./gessages-server/gessages-server-users-api
+        run: |
+          npm install
+          npm run build --if-present
+        #npm run test
+        env:
+          DB_HOST: redis
+          DB_PORT: 6379
+          
+      - name: build and test server-gateway
+        working-directory: ./gessages-server/gessages-server-api-gateway
+        run: |
+          npm install
+          npm run build --if-present
+        #npm run test
+        env:
+          DB_HOST: redis
+          DB_PORT: 6379
