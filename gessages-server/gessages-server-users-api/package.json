@@ -9,7 +9,7 @@
     "start:dev": "tsc-watch --onSuccess \"node dist/index.js\"",
     "start:debug": "npm run --inspect build && node dist/index.js --DB_PORT=22",
     "lint": "eslint . --ext .ts",
-    "test": "jest --coverage --detectOpenHandles"
+    "test": "jest --coverage --detectOpenHandles --runInBand"
   },
   "keywords": [],
   "author": "3OW",
