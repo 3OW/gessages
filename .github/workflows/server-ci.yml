@@ -48,7 +48,7 @@ jobs:
         run: |
           npm install
           npm run build --if-present
-        #npm run test
+          npm run test
         env:
           DB_HOST: redis
           DB_PORT: 6379
